@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Chat en tiempo real con WebSockets">
+  <title>NatuChat | Chat en tiempo real</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <section class="chat-app" aria-label="NatuChat">
+      <header class="topbar">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true">N</span>
+          <div>
+            <p class="eyebrow">Conversación en vivo</p>
+            <h1>NatuChat</h1>
+          </div>
+        </div>
+        <div class="connection-state" aria-live="polite">
+          <span id="connection-dot" class="status-dot status-dot--closed" aria-hidden="true"></span>
+          <span id="connection-status">Desconectado</span>
+        </div>
+      </header>
+
+      <div class="chat-layout">
+        <section class="conversation" aria-label="Conversación">
+          <div id="messages" class="messages" aria-live="polite" aria-label="Mensajes del chat"></div>
+          <p id="typing-indicator" class="typing-indicator" aria-live="polite"></p>
+
+          <form id="message-form" class="message-form" autocomplete="off">
+            <label class="sr-only" for="message-input">Escribe un mensaje</label>
+            <input id="message-input" name="message" type="text" maxlength="500" placeholder="Escribe un mensaje..." disabled>
+            <button id="send-button" type="submit" disabled>
+              <span>Enviar</span>
+              <span aria-hidden="true">&rarr;</span>
+            </button>
+          </form>
+        </section>
+
+        <aside class="users-panel" aria-label="Usuarios activos">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Ahora</p>
+              <h2>Personas conectadas</h2>
+            </div>
+            <span id="user-count" class="count-badge">0</span>
+          </div>
+          <ul id="user-list" class="user-list"></ul>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <div id="username-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="username-title">
+    <form id="username-form" class="username-modal" autocomplete="off">
+      <div class="modal-icon" aria-hidden="true">&bull;</div>
+      <p class="eyebrow">Bienvenido a NatuChat</p>
+      <h2 id="username-title">¿Cómo te llamamos?</h2>
+      <p class="modal-copy">Elige un nombre para entrar a la conversación.</p>
+      <label for="username-input">Nombre de usuario</label>
+      <input id="username-input" name="username" type="text" maxlength="20" required autofocus placeholder="Tu nombre">
+      <p id="username-error" class="form-error" role="alert"></p>
+      <button type="submit" class="primary-button">Entrar al chat <span aria-hidden="true">&rarr;</span></button>
+    </form>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
