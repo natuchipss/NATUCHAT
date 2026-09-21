@@ -13,6 +13,15 @@ const clients = new Map(); // ws -> { username }
 const messageHistory = []; // Almacena hasta 20 últimos mensajes
 const MAX_HISTORY = 20;
 
+// Endpoint raíz para comprobar que el servicio HTTP está disponible.
+app.get('/', (req, res) => {
+  res.status(200).json({
+    service: 'NatuChat WebSocket backend',
+    status: 'ok',
+    websocket: true
+  });
+});
+
 // 1. Endpoint HTTP /health
 app.get('/health', (req, res) => {
   res.status(200).json({ status: 'ok', uptime: process.uptime() });
