@@ -23,7 +23,6 @@ function setConnection(connected) {
   elements.connectionDot.className = `h-2 w-2 rounded-full ${connected ? 'bg-mint' : 'bg-amber-400'}`;
   elements.connectionLabel.textContent = connected ? 'En línea' : 'Reconectando';
   elements.roomStatus.textContent = connected ? 'Activa' : 'Conectando';
-  elements.messageInput.disabled = !connected;
   elements.sendButton.disabled = !connected;
 }
 
